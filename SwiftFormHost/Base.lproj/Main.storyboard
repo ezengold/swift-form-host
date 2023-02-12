@@ -1,24 +1,166 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SwiftFormHost" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mbk-7a-2Bg">
+                                <rect key="frame" x="0.0" y="48" width="414" height="814"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8aN-Oe-qFf" userLabel="Container">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="390.5"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="BTX-HU-qSz">
+                                                <rect key="frame" x="15" y="30" width="384" height="360.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift Form Fields" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-sB-gqV">
+                                                        <rect key="frame" x="0.0" y="0.0" width="384" height="20.5"/>
+                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4FN-or-tWJ" customClass="SFTextField" customModule="SwiftFormHost" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="55.5" width="384" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                        <color key="tintColor" systemColor="labelColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="Xgy-Ye-oq7"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter your full name"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingHorizontal">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconLeft" value="person" catalog="system"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7SG-SP-NhI" customClass="SFTextField" customModule="SwiftFormHost" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="140.5" width="384" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                        <color key="tintColor" systemColor="labelColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="4Rr-Ss-MMw"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter your email"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingHorizontal">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconLeft" value="envelope" catalog="system"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ws-MZ-9Sh" customClass="SFTextField" customModule="SwiftFormHost" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="225.5" width="384" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                        <color key="tintColor" systemColor="labelColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="vu1-PW-Suy"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a new password"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingHorizontal">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconLeft" value="person.badge.key" catalog="system"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconRight" value="eye.slash" catalog="system"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3PR-iB-y5N" customClass="SFTextField" customModule="SwiftFormHost" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="310.5" width="384" height="50"/>
+                                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                        <color key="tintColor" systemColor="labelColor"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="zNt-9c-3iq"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Confirm your password"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingHorizontal">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconRight" value="eye.slash" catalog="system"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconLeft" value="person.badge.key" catalog="system"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="BTX-HU-qSz" secondAttribute="trailing" constant="15" id="Kd0-Oh-rVD"/>
+                                            <constraint firstItem="BTX-HU-qSz" firstAttribute="leading" secondItem="8aN-Oe-qFf" secondAttribute="leading" constant="15" id="fZG-I3-mz6"/>
+                                            <constraint firstItem="BTX-HU-qSz" firstAttribute="top" secondItem="8aN-Oe-qFf" secondAttribute="top" constant="30" id="kFy-q9-sNb"/>
+                                            <constraint firstAttribute="bottom" secondItem="BTX-HU-qSz" secondAttribute="bottom" id="ym6-QV-HzX"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="8aN-Oe-qFf" firstAttribute="leading" secondItem="Mbk-7a-2Bg" secondAttribute="leading" id="Ff8-Lf-B2I"/>
+                                    <constraint firstAttribute="trailing" secondItem="8aN-Oe-qFf" secondAttribute="trailing" id="OiW-4N-szT"/>
+                                    <constraint firstAttribute="bottom" secondItem="8aN-Oe-qFf" secondAttribute="bottom" id="sgV-70-eLQ"/>
+                                    <constraint firstItem="8aN-Oe-qFf" firstAttribute="top" secondItem="Mbk-7a-2Bg" secondAttribute="top" id="yKh-0Q-7gu"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Mbk-7a-2Bg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AZE-p7-haa"/>
+                            <constraint firstItem="Mbk-7a-2Bg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="AkQ-qa-f0w"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mbk-7a-2Bg" secondAttribute="bottom" id="CIu-PC-ttc"/>
+                            <constraint firstItem="8aN-Oe-qFf" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="acQ-Lp-gDB"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Mbk-7a-2Bg" secondAttribute="trailing" id="kNO-Ns-6nv"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="emailField" destination="7SG-SP-NhI" id="c7Q-eJ-6qR"/>
+                        <outlet property="nameField" destination="4FN-or-tWJ" id="mUC-dF-ksS"/>
+                        <outlet property="passconfField" destination="3PR-iB-y5N" id="EPn-Vi-RGz"/>
+                        <outlet property="passwordField" destination="7Ws-MZ-9Sh" id="vI5-ZE-fPU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-48" y="4"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="envelope" catalog="system" width="128" height="93"/>
+        <image name="eye.slash" catalog="system" width="128" height="84"/>
+        <image name="person" catalog="system" width="128" height="121"/>
+        <image name="person.badge.key" catalog="system" width="128" height="116"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>
