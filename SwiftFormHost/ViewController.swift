@@ -31,8 +31,11 @@ class ViewController: UIViewController {
 extension ViewController {
 	
 	private func createViews() {
-		emailField.registerTextField(withIdentifier: emailField.tag.description, target: self)
 		nameField.registerTextField(withIdentifier: nameField.tag.description, target: self)
+		
+		emailField.registerTextField(withIdentifier: emailField.tag.description, target: self)
+		emailField.error = "lorem ipsum dolor sit"
+		
 		passwordField.registerTextField(withIdentifier: passwordField.tag.description, target: self)
 		passconfField.registerTextField(withIdentifier: passconfField.tag.description, target: self)
 	}

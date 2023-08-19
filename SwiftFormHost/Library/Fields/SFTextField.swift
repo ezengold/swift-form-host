@@ -7,22 +7,39 @@
 
 import UIKit
 
-@IBDesignable
+// @IBDesignable
 class SFTextField: UIView {
+	
+	@IBInspectable var height: CGFloat = 40.0
 	
 	let textField = UITextField()
 	
-	let stack = UIStackView()
+	private let vStack = UIStackView()
 	
-	var error: String = ""
+	private let hStack = UIStackView()
 	
-	let errorLabel = UILabel()
-	
-	let errorLabelOffset = Offset(x: 0.0, y: 0.0)
-	
-	var delegate: SFTextFieldDelegate? = nil
+	private let errorLabel = UILabel()
 	
 	var name: String = ""
+
+	var error: String = "" {
+		didSet {
+			setErrorLabel()
+		}
+	}
+	
+	var errorAlignment: NSTextAlignment = .right
+	
+	@IBInspectable var errorFont: UIFont {
+		get {
+			return errorLabel.font ?? UIFont.systemFont(ofSize: 12)
+		}
+		set {
+			errorLabel.font = newValue
+		}
+	}
+	
+	var delegate: SFTextFieldDelegate? = nil
 
 	@IBInspectable var value: String {
 		get {
@@ -33,9 +50,9 @@ class SFTextField: UIView {
 		}
 	}
 	
-	@IBInspectable var textFieldFont: UIFont {
+	@IBInspectable var font: UIFont {
 		get {
-			return textField.font ?? UIFont.systemFont(ofSize: 17)
+			return textField.font ?? UIFont.systemFont(ofSize: 15)
 		}
 		set {
 			textField.font = newValue
@@ -169,17 +186,33 @@ class SFTextField: UIView {
 	}
 	
 	private func initializeView() {
-		stack.axis = .horizontal
-		stack.alignment = .fill
-		stack.distribution = .fill
-		stack.spacing = 10
-		stack.translatesAutoresizingMaskIntoConstraints = false
-		addSubview(stack)
+		vStack.axis = .vertical
+		vStack.alignment = .fill
+		vStack.distribution = .fill
+		vStack.spacing = 0
+		vStack.translatesAutoresizingMaskIntoConstraints = false
+
+		hStack.axis = .horizontal
+		hStack.alignment = .fill
+		hStack.distribution = .fill
+		hStack.spacing = 10
+		hStack.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			NSLayoutConstraint(item: hStack, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: self.height)
+		])
 		
-		paddingTop = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: stack, attribute: .top, multiplier: 1.0, constant: -contentInsets.top)
-		paddingRight = NSLayoutConstraint(item: self, attribute: .right, relatedBy: .equal, toItem: stack, attribute: .right, multiplier: 1.0, constant: contentInsets.right)
-		paddingBottom = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: stack, attribute: .bottom, multiplier: 1.0, constant: contentInsets.bottom)
-		paddingLeft = NSLayoutConstraint(item: self, attribute: .left, relatedBy: .equal, toItem: stack, attribute: .left, multiplier: 1.0, constant: -contentInsets.left)
+		vStack.addArrangedSubview(hStack)
+		errorLabel.tag = 4
+		if !self.error.isEmpty {
+			vStack.addArrangedSubview(errorLabel)
+		}
+		
+		addSubview(vStack)
+		
+		paddingTop = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: vStack, attribute: .top, multiplier: 1.0, constant: -contentInsets.top)
+		paddingRight = NSLayoutConstraint(item: self, attribute: .right, relatedBy: .equal, toItem: vStack, attribute: .right, multiplier: 1.0, constant: contentInsets.right)
+		paddingBottom = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: vStack, attribute: .bottom, multiplier: 1.0, constant: contentInsets.bottom)
+		paddingLeft = NSLayoutConstraint(item: self, attribute: .left, relatedBy: .equal, toItem: vStack, attribute: .left, multiplier: 1.0, constant: -contentInsets.left)
 		NSLayoutConstraint.activate([paddingTop, paddingRight, paddingBottom, paddingLeft])
 		
 		setLeftIcon()
@@ -205,7 +238,7 @@ class SFTextField: UIView {
 	
 	private func setLeftIcon() {
 		if let icon = self.iconLeft {
-			if stack.arrangedSubviews.first(where: { $0.tag == 1 }) is UIImageView {
+			if hStack.arrangedSubviews.first(where: { $0.tag == 1 }) is UIImageView {
 				leftIV.image = icon
 			} else {
 				leftIV.image = icon
@@ -217,10 +250,10 @@ class SFTextField: UIView {
 				NSLayoutConstraint.activate([
 					NSLayoutConstraint(item: leftIV, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 25)
 				])
-				stack.insertArrangedSubview(leftIV, at: 0)
+				hStack.insertArrangedSubview(leftIV, at: 0)
 			}
 		} else {
-			if let iconIV = stack.arrangedSubviews.first(where: { $0.tag == 1 }) {
+			if let iconIV = hStack.arrangedSubviews.first(where: { $0.tag == 1 }) {
 				iconIV.removeFromSuperview()
 			}
 		}
@@ -228,7 +261,7 @@ class SFTextField: UIView {
 	
 	private func setRightIcon() {
 		if let icon = self.iconRight {
-			if stack.arrangedSubviews.first(where: { $0.tag == 3 }) is UIImageView {
+			if hStack.arrangedSubviews.first(where: { $0.tag == 3 }) is UIImageView {
 				rightIV.image = icon
 			} else {
 				rightIV.image = icon
@@ -240,10 +273,10 @@ class SFTextField: UIView {
 				NSLayoutConstraint.activate([
 					NSLayoutConstraint(item: rightIV, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 25)
 				])
-				stack.addArrangedSubview(rightIV)
+				hStack.addArrangedSubview(rightIV)
 			}
 		} else {
-			if let iconIV = stack.arrangedSubviews.first(where: { $0.tag == 3 }) {
+			if let iconIV = hStack.arrangedSubviews.first(where: { $0.tag == 3 }) {
 				iconIV.removeFromSuperview()
 			}
 		}
@@ -254,19 +287,26 @@ class SFTextField: UIView {
 		textField.placeholder = placeholder
 		textField.tintColor = self.tintColor
 		
-		if stack.arrangedSubviews.contains(where: { $0.tag == 2 }) {
+		if hStack.arrangedSubviews.contains(where: { $0.tag == 2 }) {
 			// do customizations
 		} else {
 			textField.tag = 2
-			stack.insertArrangedSubview(textField, at: self.iconLeft != nil ? 1 : 0)
+			hStack.insertArrangedSubview(textField, at: self.iconLeft != nil ? 1 : 0)
 		}
 	}
 	
 	private func setErrorLabel() {
-		if self.subviews.contains(where: { $0.tag == 4 }) {
-			//
-		} else {
-			//
+		errorLabel.numberOfLines = 1
+		errorLabel.textAlignment = self.errorAlignment
+		errorLabel.textColor = .red // TODO: To be defined
+		errorLabel.text = self.error
+
+		if vStack.arrangedSubviews.first(where: { $0.tag == 4 }) is UILabel {
+			if self.error.isEmpty {
+				errorLabel.removeFromSuperview()
+			}
+		} else if !self.error.isEmpty {
+			vStack.addArrangedSubview(self.errorLabel)
 		}
 	}
 	

@@ -7,22 +7,6 @@
 
 import Foundation
 
-@objcMembers
-@objc public class Offset: NSObject {
-	public let x: CGFloat
-	public let y: CGFloat
-	
-	override init() {
-		self.x = 0
-		self.y = 0
-	}
-	
-	init(x: CGFloat, y: CGFloat) {
-		self.x = x
-		self.y = y
-	}
-}
-
 public struct SFHelpers {
 	static func isEqual(a: Any, b: Any) -> Bool {
 		if a is Character {
