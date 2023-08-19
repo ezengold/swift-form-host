@@ -35,17 +35,17 @@ extension ViewController {
 		passconfField.registerTextField(withIdentifier: passconfField.tag.description, target: self)
 	}
 	
-	func submit() {
-		// pass the fields data and rules defined
-		let validation = SwiftFormHost.shared.validateForm(data: [
-			emailField.tag.description: emailField.text,
-			
-		], rules: self.rules))
-		
-		if validation.isFormValid {
-			//
-		}
-	}
+//	func submit() {
+//		// pass the fields data and rules defined
+//		let validation = SwiftFormHost.shared.validateForm(data: [
+//			emailField.tag.description: emailField.text,
+//
+//		], rules: self.rules))
+//
+//		if validation.isFormValid {
+//			//
+//		}
+//	}
 }
 
 extension ViewController: SFTextFieldDelegate {

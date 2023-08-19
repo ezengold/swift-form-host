@@ -215,11 +215,11 @@ class SFTextField: UIView {
 		self.delegate = target
 	}
 	
-	func textChanged() {
-		if let rules = self.delegate?.fieldsRules() {
-			if let fieldRule = rules[self.name] {
-				// TODO: Apply rule
-			}
-		}
-	}
+//	func textChanged() {
+//		if let rules = self.delegate?.fieldsRules() {
+//			if let fieldRule = rules[self.name] {
+//				// TODO: Apply rule
+//			}
+//		}
+//	}
 }

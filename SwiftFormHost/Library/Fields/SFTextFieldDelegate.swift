@@ -15,5 +15,5 @@ protocol SFTextFieldDelegate: UITextFieldDelegate {
 	
 	@objc optional func errorLabelOffset(_ instance: SFTextField, _ textField: UITextField) -> Offset
 	
-	func fieldsRules() -> [SwiftFormRule] // array of rules
+	// func fieldsRules() -> [SwiftFormRule] // array of rules
 }
