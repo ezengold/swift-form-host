@@ -51,6 +51,10 @@ class SFTextField: UIView {
 		}
 	}
 	
+	// MARK: - Icons attributes
+	/**
+	 Icon displayed on Left of the text field
+	 */
 	@IBInspectable var iconLeft: UIImage? = nil {
 		didSet {
 			setLeftIcon()
@@ -63,26 +67,63 @@ class SFTextField: UIView {
 		}
 	}
 	
-	var onClickRight: ((UIImageView) -> Void)? = nil
-	
+	/**
+	 Action triggered when user tap on the left icon
+	 
+	 - parameter iconView: Representation of the image view containing the left icon image
+	 */
 	var onClickLeft: ((UIImageView) -> Void)? = nil
 	
+	/**
+	 Action triggered when user tap on the right icon
+	 
+	 - parameter iconView: Representation of the image view containing the right icon image
+	 */
+	var onClickRight: ((UIImageView) -> Void)? = nil
+	
+	/**
+	 Image view holding the left icon
+	 */
 	private var leftIV = UIImageView()
 	
+	/**
+	 Image view holding the right icon
+	 */
 	private var rightIV = UIImageView()
 	
-	// constraints
-	private var paddingTop = NSLayoutConstraint()
-	private var paddingRight = NSLayoutConstraint()
-	private var paddingBottom = NSLayoutConstraint()
-	private var paddingLeft = NSLayoutConstraint()
-	
+	// MARK: - Constraints applied
+	/**
+	 Insets applied to the field insets
+	 */
 	var contentInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10) {
 		didSet {
 			updateContentInsets()
 		}
 	}
 	
+	/**
+	 Padding top
+	 */
+	private var paddingTop = NSLayoutConstraint()
+	
+	/**
+	 Padding right
+	 */
+	private var paddingRight = NSLayoutConstraint()
+	
+	/**
+	 Padding bottom
+	 */
+	private var paddingBottom = NSLayoutConstraint()
+	
+	/**
+	 Padding left
+	 */
+	private var paddingLeft = NSLayoutConstraint()
+	
+	/**
+	 Horizontal padding
+	 */
 	@IBInspectable var paddingHorizontal: CGFloat {
 		get {
 			return min(contentInsets.left, contentInsets.right)
@@ -97,6 +138,9 @@ class SFTextField: UIView {
 		}
 	}
 	
+	/**
+	 Vertical padding
+	 */
 	@IBInspectable var paddingVertical: CGFloat {
 		get {
 			return min(contentInsets.top, contentInsets.top)
@@ -111,6 +155,7 @@ class SFTextField: UIView {
 		}
 	}
 	
+	// MARK: - Views creation
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
@@ -140,26 +185,28 @@ class SFTextField: UIView {
 		setLeftIcon()
 		setRightIcon()
 		
+		leftIV.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(leftAction)))
+		rightIV.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(rightAction)))
+		
 		setInputField()
 		
 		setErrorLabel()
 	}
 	
 	@objc
-	func leftAction() {
+	func leftAction(_ sender: UITapGestureRecognizer) {
 		self.onClickLeft?(self.leftIV)
 	}
 	
 	@objc
-	func rightAction() {
+	func rightAction(_ sender: UITapGestureRecognizer) {
 		self.onClickRight?(self.rightIV)
 	}
 	
 	private func setLeftIcon() {
 		if let icon = self.iconLeft {
-			if let leftIconIV = stack.arrangedSubviews.first(where: { $0.tag == 1 }) as? UIImageView {
+			if stack.arrangedSubviews.first(where: { $0.tag == 1 }) is UIImageView {
 				leftIV.image = icon
-				// leftIconIV.image = icon // TODO: Check if changes are sync
 			} else {
 				leftIV.image = icon
 				leftIV.translatesAutoresizingMaskIntoConstraints = false
@@ -181,21 +228,19 @@ class SFTextField: UIView {
 	
 	private func setRightIcon() {
 		if let icon = self.iconRight {
-			if let rightIconIV = stack.arrangedSubviews.first(where: { $0.tag == 3 }) as? UIImageView {
+			if stack.arrangedSubviews.first(where: { $0.tag == 3 }) is UIImageView {
 				rightIV.image = icon
 			} else {
 				rightIV.image = icon
 				rightIV.translatesAutoresizingMaskIntoConstraints = false
 				rightIV.contentMode = .scaleAspectFit
 				rightIV.tintColor = self.tintColor
-				leftIV.isUserInteractionEnabled = true
+				rightIV.isUserInteractionEnabled = true
 				rightIV.tag = 3
 				NSLayoutConstraint.activate([
 					NSLayoutConstraint(item: rightIV, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 25)
 				])
 				stack.addArrangedSubview(rightIV)
-				
-				rightIV.addGestureRecognizer(UITapGestureRecognizer(target: self.delegate, action: #selector(rightAction)))
 			}
 		} else {
 			if let iconIV = stack.arrangedSubviews.first(where: { $0.tag == 3 }) {
@@ -224,7 +269,6 @@ class SFTextField: UIView {
 			//
 		}
 	}
-
 	
 	private func updateContentInsets() {
 		paddingTop.constant = -contentInsets.top
@@ -235,14 +279,7 @@ class SFTextField: UIView {
 	
 	func registerTextField(withIdentifier name: String, target: SFTextFieldDelegate) {
 		self.name = name
-		
 		self.delegate = target
-		
-		setLeftIcon()
-		setRightIcon()
-		
-		leftIV.addGestureRecognizer(UITapGestureRecognizer(target: target, action: #selector(leftAction)))
-		rightIV.addGestureRecognizer(UITapGestureRecognizer(target: target, action: #selector(rightAction)))
 	}
 	
 //	func textChanged() {
