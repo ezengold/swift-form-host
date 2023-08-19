@@ -7,6 +7,7 @@
 
 import UIKit
 
+@IBDesignable
 class SFTextField: UIView {
 	
 	let textField = UITextField()
@@ -20,6 +21,8 @@ class SFTextField: UIView {
 	let errorLabelOffset = Offset(x: 0.0, y: 0.0)
 	
 	var delegate: SFTextFieldDelegate? = nil
+	
+	var name: String = ""
 
 	@IBInspectable var value: String {
 		get {
@@ -205,5 +208,18 @@ class SFTextField: UIView {
 		paddingRight.constant = contentInsets.right
 		paddingBottom.constant = contentInsets.bottom
 		paddingLeft.constant = -contentInsets.left
+	}
+	
+	func registerTextField(withIdentifier name: String, target: SFTextFieldDelegate) {
+		self.name = name
+		self.delegate = target
+	}
+	
+	func textChanged() {
+		if let rules = self.delegate?.fieldsRules() {
+			if let fieldRule = rules[self.name] {
+				// TODO: Apply rule
+			}
+		}
 	}
 }

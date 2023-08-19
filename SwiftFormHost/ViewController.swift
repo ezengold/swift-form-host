@@ -17,6 +17,8 @@ class ViewController: UIViewController {
 	
 	@IBOutlet weak var passconfField: SFTextField!
 	
+	var rules = [String: [String]]()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -27,13 +29,28 @@ class ViewController: UIViewController {
 extension ViewController {
 	
 	private func createViews() {
-		emailField.delegate = self
-		nameField.delegate = self
-		passwordField.delegate = self
-		passconfField.delegate = self
+		emailField.registerTextField(withIdentifier: emailField.tag.description, target: self)
+		nameField.registerTextField(withIdentifier: nameField.tag.description, target: self)
+		passwordField.registerTextField(withIdentifier: passwordField.tag.description, target: self)
+		passconfField.registerTextField(withIdentifier: passconfField.tag.description, target: self)
+	}
+	
+	func submit() {
+		// pass the fields data and rules defined
+		let validation = SwiftFormHost.shared.validateForm(data: [
+			emailField.tag.description: emailField.text,
+			
+		], rules: self.rules))
+		
+		if validation.isFormValid {
+			//
+		}
 	}
 }
 
 extension ViewController: SFTextFieldDelegate {
-	//
+	
+	func fieldsRules() -> [String: [String]] {
+		self.rules
+	}
 }

@@ -17,6 +17,22 @@
 		B1A6FE402998E2FF00F9D19C /* SFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6FE3F2998E2FF00F9D19C /* SFTextField.swift */; };
 		B1A6FE422998E31A00F9D19C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6FE412998E31A00F9D19C /* Extensions.swift */; };
 		B1A6FE442998E33400F9D19C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6FE432998E33400F9D19C /* Utils.swift */; };
+		B1BFE3B22A90C5EE005D5DD1 /* SwiftFormModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3AF2A90C5EE005D5DD1 /* SwiftFormModel.swift */; };
+		B1BFE3B32A90C5EE005D5DD1 /* SwiftFormValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3B02A90C5EE005D5DD1 /* SwiftFormValidator.swift */; };
+		B1BFE3B42A90C5EE005D5DD1 /* SwiftFormRule.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3B12A90C5EE005D5DD1 /* SwiftFormRule.swift */; };
+		B1BFE3C32A90C607005D5DD1 /* IsRequired.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3B62A90C607005D5DD1 /* IsRequired.swift */; };
+		B1BFE3C42A90C607005D5DD1 /* MaxLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3B72A90C607005D5DD1 /* MaxLength.swift */; };
+		B1BFE3C52A90C607005D5DD1 /* MaxValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3B82A90C607005D5DD1 /* MaxValue.swift */; };
+		B1BFE3C62A90C607005D5DD1 /* IsEqualTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3B92A90C607005D5DD1 /* IsEqualTo.swift */; };
+		B1BFE3C72A90C607005D5DD1 /* IsName.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3BA2A90C607005D5DD1 /* IsName.swift */; };
+		B1BFE3C82A90C607005D5DD1 /* IsStrongPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3BB2A90C607005D5DD1 /* IsStrongPassword.swift */; };
+		B1BFE3C92A90C607005D5DD1 /* MinLength.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3BC2A90C607005D5DD1 /* MinLength.swift */; };
+		B1BFE3CA2A90C607005D5DD1 /* MinValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3BD2A90C607005D5DD1 /* MinValue.swift */; };
+		B1BFE3CB2A90C607005D5DD1 /* IsEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3BE2A90C607005D5DD1 /* IsEmail.swift */; };
+		B1BFE3CC2A90C607005D5DD1 /* ExactSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3BF2A90C607005D5DD1 /* ExactSize.swift */; };
+		B1BFE3CD2A90C607005D5DD1 /* IsNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3C02A90C607005D5DD1 /* IsNumber.swift */; };
+		B1BFE3CE2A90C607005D5DD1 /* IsDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3C12A90C607005D5DD1 /* IsDate.swift */; };
+		B1BFE3CF2A90C607005D5DD1 /* IsInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3C22A90C607005D5DD1 /* IsInteger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +48,22 @@
 		B1A6FE3F2998E2FF00F9D19C /* SFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTextField.swift; sourceTree = "<group>"; };
 		B1A6FE412998E31A00F9D19C /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B1A6FE432998E33400F9D19C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B1BFE3AF2A90C5EE005D5DD1 /* SwiftFormModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftFormModel.swift; sourceTree = "<group>"; };
+		B1BFE3B02A90C5EE005D5DD1 /* SwiftFormValidator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftFormValidator.swift; sourceTree = "<group>"; };
+		B1BFE3B12A90C5EE005D5DD1 /* SwiftFormRule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftFormRule.swift; sourceTree = "<group>"; };
+		B1BFE3B62A90C607005D5DD1 /* IsRequired.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsRequired.swift; sourceTree = "<group>"; };
+		B1BFE3B72A90C607005D5DD1 /* MaxLength.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxLength.swift; sourceTree = "<group>"; };
+		B1BFE3B82A90C607005D5DD1 /* MaxValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaxValue.swift; sourceTree = "<group>"; };
+		B1BFE3B92A90C607005D5DD1 /* IsEqualTo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsEqualTo.swift; sourceTree = "<group>"; };
+		B1BFE3BA2A90C607005D5DD1 /* IsName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsName.swift; sourceTree = "<group>"; };
+		B1BFE3BB2A90C607005D5DD1 /* IsStrongPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsStrongPassword.swift; sourceTree = "<group>"; };
+		B1BFE3BC2A90C607005D5DD1 /* MinLength.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinLength.swift; sourceTree = "<group>"; };
+		B1BFE3BD2A90C607005D5DD1 /* MinValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MinValue.swift; sourceTree = "<group>"; };
+		B1BFE3BE2A90C607005D5DD1 /* IsEmail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsEmail.swift; sourceTree = "<group>"; };
+		B1BFE3BF2A90C607005D5DD1 /* ExactSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExactSize.swift; sourceTree = "<group>"; };
+		B1BFE3C02A90C607005D5DD1 /* IsNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsNumber.swift; sourceTree = "<group>"; };
+		B1BFE3C12A90C607005D5DD1 /* IsDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsDate.swift; sourceTree = "<group>"; };
+		B1BFE3C22A90C607005D5DD1 /* IsInteger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsInteger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +111,8 @@
 		B1A6FE3E2998E2CB00F9D19C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				B1BFE3AE2A90C55F005D5DD1 /* Validator */,
+				B1BFE3B52A90C607005D5DD1 /* Rules */,
 				B1A6FE452998E33E00F9D19C /* Fields */,
 				B1A6FE432998E33400F9D19C /* Utils.swift */,
 				B1A6FE412998E31A00F9D19C /* Extensions.swift */,
@@ -93,6 +127,36 @@
 				B101521229998586001F2B87 /* SFTextFieldDelegate.swift */,
 			);
 			path = Fields;
+			sourceTree = "<group>";
+		};
+		B1BFE3AE2A90C55F005D5DD1 /* Validator */ = {
+			isa = PBXGroup;
+			children = (
+				B1BFE3AF2A90C5EE005D5DD1 /* SwiftFormModel.swift */,
+				B1BFE3B12A90C5EE005D5DD1 /* SwiftFormRule.swift */,
+				B1BFE3B02A90C5EE005D5DD1 /* SwiftFormValidator.swift */,
+			);
+			path = Validator;
+			sourceTree = "<group>";
+		};
+		B1BFE3B52A90C607005D5DD1 /* Rules */ = {
+			isa = PBXGroup;
+			children = (
+				B1BFE3B62A90C607005D5DD1 /* IsRequired.swift */,
+				B1BFE3B72A90C607005D5DD1 /* MaxLength.swift */,
+				B1BFE3B82A90C607005D5DD1 /* MaxValue.swift */,
+				B1BFE3B92A90C607005D5DD1 /* IsEqualTo.swift */,
+				B1BFE3BA2A90C607005D5DD1 /* IsName.swift */,
+				B1BFE3BB2A90C607005D5DD1 /* IsStrongPassword.swift */,
+				B1BFE3BC2A90C607005D5DD1 /* MinLength.swift */,
+				B1BFE3BD2A90C607005D5DD1 /* MinValue.swift */,
+				B1BFE3BE2A90C607005D5DD1 /* IsEmail.swift */,
+				B1BFE3BF2A90C607005D5DD1 /* ExactSize.swift */,
+				B1BFE3C02A90C607005D5DD1 /* IsNumber.swift */,
+				B1BFE3C12A90C607005D5DD1 /* IsDate.swift */,
+				B1BFE3C22A90C607005D5DD1 /* IsInteger.swift */,
+			);
+			path = Rules;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,11 +230,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1BFE3CA2A90C607005D5DD1 /* MinValue.swift in Sources */,
+				B1BFE3C52A90C607005D5DD1 /* MaxValue.swift in Sources */,
+				B1BFE3CB2A90C607005D5DD1 /* IsEmail.swift in Sources */,
 				B1A6FE422998E31A00F9D19C /* Extensions.swift in Sources */,
+				B1BFE3B22A90C5EE005D5DD1 /* SwiftFormModel.swift in Sources */,
 				B1A6FE2F2998E18F00F9D19C /* ViewController.swift in Sources */,
+				B1BFE3CD2A90C607005D5DD1 /* IsNumber.swift in Sources */,
 				B101521329998586001F2B87 /* SFTextFieldDelegate.swift in Sources */,
 				B1A6FE2B2998E18F00F9D19C /* AppDelegate.swift in Sources */,
 				B1A6FE402998E2FF00F9D19C /* SFTextField.swift in Sources */,
+				B1BFE3CF2A90C607005D5DD1 /* IsInteger.swift in Sources */,
+				B1BFE3C62A90C607005D5DD1 /* IsEqualTo.swift in Sources */,
+				B1BFE3C92A90C607005D5DD1 /* MinLength.swift in Sources */,
+				B1BFE3C42A90C607005D5DD1 /* MaxLength.swift in Sources */,
+				B1BFE3B32A90C5EE005D5DD1 /* SwiftFormValidator.swift in Sources */,
+				B1BFE3B42A90C5EE005D5DD1 /* SwiftFormRule.swift in Sources */,
+				B1BFE3CC2A90C607005D5DD1 /* ExactSize.swift in Sources */,
+				B1BFE3C72A90C607005D5DD1 /* IsName.swift in Sources */,
+				B1BFE3CE2A90C607005D5DD1 /* IsDate.swift in Sources */,
+				B1BFE3C32A90C607005D5DD1 /* IsRequired.swift in Sources */,
+				B1BFE3C82A90C607005D5DD1 /* IsStrongPassword.swift in Sources */,
 				B1A6FE2D2998E18F00F9D19C /* SceneDelegate.swift in Sources */,
 				B1A6FE442998E33400F9D19C /* Utils.swift in Sources */,
 			);

@@ -8,9 +8,12 @@
 import Foundation
 import UIKit
 
-@objc protocol SFTextFieldDelegate {
+@objc
+protocol SFTextFieldDelegate: UITextFieldDelegate {
 	
 	@objc optional func shouldDisplayErrorLabels(_ instance: SFTextField, _ textField: UITextField) -> Bool
 	
 	@objc optional func errorLabelOffset(_ instance: SFTextField, _ textField: UITextField) -> Offset
+	
+	func fieldsRules() -> [SwiftFormRule] // array of rules
 }
