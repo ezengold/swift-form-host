@@ -19,6 +19,8 @@ class ViewController: UIViewController {
 	
 	var rules = [String: [String]]()
 	
+	var isSecured: Bool = true
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -31,7 +33,22 @@ extension ViewController {
 	private func createViews() {
 		emailField.registerTextField(withIdentifier: emailField.tag.description, target: self)
 		nameField.registerTextField(withIdentifier: nameField.tag.description, target: self)
+		
 		passwordField.registerTextField(withIdentifier: passwordField.tag.description, target: self)
+		
+		passwordField.onClickRight = { iv in
+			print(iv)
+			
+			self.isSecured.toggle()
+			DispatchQueue.main.async {
+				if self.isSecured {
+					iv.image = UIImage(systemName: "eye.slash")
+				} else {
+					iv.image = UIImage(systemName: "eye")
+				}
+			}
+		}
+		
 		passconfField.registerTextField(withIdentifier: passconfField.tag.description, target: self)
 	}
 	

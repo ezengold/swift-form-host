@@ -63,6 +63,14 @@ class SFTextField: UIView {
 		}
 	}
 	
+	var onClickRight: ((UIImageView) -> Void)? = nil
+	
+	var onClickLeft: ((UIImageView) -> Void)? = nil
+	
+	private var leftIV = UIImageView()
+	
+	private var rightIV = UIImageView()
+	
 	// constraints
 	private var paddingTop = NSLayoutConstraint()
 	private var paddingRight = NSLayoutConstraint()
@@ -129,28 +137,40 @@ class SFTextField: UIView {
 		paddingLeft = NSLayoutConstraint(item: self, attribute: .left, relatedBy: .equal, toItem: stack, attribute: .left, multiplier: 1.0, constant: -contentInsets.left)
 		NSLayoutConstraint.activate([paddingTop, paddingRight, paddingBottom, paddingLeft])
 		
-		setLeftIcon(self.iconLeft)
-		setRightIcon(self.iconRight)
+		setLeftIcon()
+		setRightIcon()
 		
 		setInputField()
 		
 		setErrorLabel()
 	}
 	
-	func setLeftIcon(_ iconImg: UIImage? = nil, onClick: (() -> Void)? = nil) {
+	@objc
+	func leftAction() {
+		self.onClickLeft?(self.leftIV)
+	}
+	
+	@objc
+	func rightAction() {
+		self.onClickRight?(self.rightIV)
+	}
+	
+	private func setLeftIcon() {
 		if let icon = self.iconLeft {
 			if let leftIconIV = stack.arrangedSubviews.first(where: { $0.tag == 1 }) as? UIImageView {
-				leftIconIV.image = icon
+				leftIV.image = icon
+				// leftIconIV.image = icon // TODO: Check if changes are sync
 			} else {
-				let leftIconIV = UIImageView(image: icon)
-				leftIconIV.translatesAutoresizingMaskIntoConstraints = false
-				leftIconIV.contentMode = .scaleAspectFit
-				leftIconIV.tintColor = self.tintColor
-				leftIconIV.tag = 1
+				leftIV.image = icon
+				leftIV.translatesAutoresizingMaskIntoConstraints = false
+				leftIV.contentMode = .scaleAspectFit
+				leftIV.tintColor = self.tintColor
+				leftIV.isUserInteractionEnabled = true
+				leftIV.tag = 1
 				NSLayoutConstraint.activate([
-					NSLayoutConstraint(item: leftIconIV, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 25)
+					NSLayoutConstraint(item: leftIV, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 25)
 				])
-				stack.insertArrangedSubview(leftIconIV, at: 0)
+				stack.insertArrangedSubview(leftIV, at: 0)
 			}
 		} else {
 			if let iconIV = stack.arrangedSubviews.first(where: { $0.tag == 1 }) {
@@ -159,20 +179,23 @@ class SFTextField: UIView {
 		}
 	}
 	
-	func setRightIcon(_ iconImg: UIImage? = nil, onClick: (() -> Void)? = nil) {
+	private func setRightIcon() {
 		if let icon = self.iconRight {
 			if let rightIconIV = stack.arrangedSubviews.first(where: { $0.tag == 3 }) as? UIImageView {
-				rightIconIV.image = icon
+				rightIV.image = icon
 			} else {
-				let rightIconIV = UIImageView(image: icon)
-				rightIconIV.translatesAutoresizingMaskIntoConstraints = false
-				rightIconIV.contentMode = .scaleAspectFit
-				rightIconIV.tintColor = self.tintColor
-				rightIconIV.tag = 3
+				rightIV.image = icon
+				rightIV.translatesAutoresizingMaskIntoConstraints = false
+				rightIV.contentMode = .scaleAspectFit
+				rightIV.tintColor = self.tintColor
+				leftIV.isUserInteractionEnabled = true
+				rightIV.tag = 3
 				NSLayoutConstraint.activate([
-					NSLayoutConstraint(item: rightIconIV, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 25)
+					NSLayoutConstraint(item: rightIV, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 25)
 				])
-				stack.addArrangedSubview(rightIconIV)
+				stack.addArrangedSubview(rightIV)
+				
+				rightIV.addGestureRecognizer(UITapGestureRecognizer(target: self.delegate, action: #selector(rightAction)))
 			}
 		} else {
 			if let iconIV = stack.arrangedSubviews.first(where: { $0.tag == 3 }) {
@@ -212,7 +235,14 @@ class SFTextField: UIView {
 	
 	func registerTextField(withIdentifier name: String, target: SFTextFieldDelegate) {
 		self.name = name
+		
 		self.delegate = target
+		
+		setLeftIcon()
+		setRightIcon()
+		
+		leftIV.addGestureRecognizer(UITapGestureRecognizer(target: target, action: #selector(leftAction)))
+		rightIV.addGestureRecognizer(UITapGestureRecognizer(target: target, action: #selector(rightAction)))
 	}
 	
 //	func textChanged() {
