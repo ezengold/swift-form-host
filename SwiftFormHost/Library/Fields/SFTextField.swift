@@ -216,6 +216,11 @@ struct SFTextFieldView: View {
 						.resizable()
 						.scaledToFit()
 						.frame(width: 25, height: 25)
+                        .onTapGesture {
+                            if let handlerOnClickLeft = params.onClickLeft {
+                                handlerOnClickLeft()
+                            }
+                        }
 				}
 				TextField(params.placeholder, text: $params.value)
 					.font(Font(params.font))
@@ -228,6 +233,11 @@ struct SFTextFieldView: View {
 						.resizable()
 						.scaledToFit()
 						.frame(width: 25, height: 25)
+                        .onTapGesture {
+                            if let handlerOnClickRight = params.onClickRight {
+                                handlerOnClickRight()
+                            }
+                        }
 				}
 			}
 			.padding(.leading, params.contentInsets.left)
