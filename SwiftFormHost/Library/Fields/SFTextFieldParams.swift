@@ -17,7 +17,7 @@ class SFTextFieldParams: ObservableObject {
 	
 	@Published var error: String = ""
 	
-	@Published var placeholder: String = "Pfff"
+	@Published var placeholder: String = ""
 	
 	@Published var keyboardType: UIKeyboardType = .default
 	
@@ -38,6 +38,10 @@ class SFTextFieldParams: ObservableObject {
 	@Published var errorAlignment: TextAlignment = .trailing
 	
 	@Published var backgroundColor: UIColor = .clear
+	
+	@Published var textColor: UIColor = .label
+	
+	@Published var errorTextColor: UIColor = .red
 	
 	@Published var tintColor: UIColor = .label
 	

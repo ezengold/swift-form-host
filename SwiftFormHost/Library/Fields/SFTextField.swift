@@ -37,9 +37,12 @@ class SFTextField: UIView {
 		}
 	}
 	
-	@IBInspectable var font: UIFont = UIFont.systemFont(ofSize: 15)  {
-		didSet {
-			params.font = self.font
+	@IBInspectable var fieldFont: UIFont  {
+		get {
+			params.font
+		}
+		set {
+			params.font = newValue
 		}
 	}
 	
@@ -124,6 +127,18 @@ class SFTextField: UIView {
 		}
 	}
 	
+	@IBInspectable var textColor: UIColor = .label {
+		didSet {
+			params.textColor = self.textColor
+		}
+	}
+	
+	@IBInspectable var errorTextColor: UIColor = .red {
+		didSet {
+			params.errorTextColor = self.errorTextColor
+		}
+	}
+	
 	override var tintColor: UIColor! {
 		didSet {
 			params.tintColor = self.tintColor
@@ -205,6 +220,7 @@ struct SFTextFieldView: View {
 				TextField(params.placeholder, text: $params.value)
 					.font(Font(params.font))
 					.accentColor(Color(params.tintColor))
+					.foregroundColor(Color(params.textColor))
 					.keyboardType(params.keyboardType)
 					.frame(maxWidth: .infinity, alignment: .leading)
 				if let safeRightIcon = params.iconRight {
@@ -231,7 +247,7 @@ struct SFTextFieldView: View {
 		}
 		if !params.error.isEmpty {
 			Text(params.error)
-				.foregroundColor(.red)
+				.foregroundColor(Color(params.errorTextColor))
 				.font(Font(params.errorFont))
 				.frame(maxWidth: .infinity, alignment: params.errorAlignment == .leading ? .leading : (params.errorAlignment == .trailing ? .trailing : .center))
 		}
@@ -241,5 +257,6 @@ struct SFTextFieldView: View {
 struct SFTextFieldView_Previews: PreviewProvider {
 	static var previews: some View {
 		SFTextFieldView(params: SFTextFieldParams())
+			.previewLayout(.sizeThatFits)
 	}
 }
