@@ -24,7 +24,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="500"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="35" translatesAutoresizingMaskIntoConstraints="NO" id="BTX-HU-qSz">
-                                                <rect key="frame" x="15" y="30" width="384" height="385.5"/>
+                                                <rect key="frame" x="15" y="30" width="384" height="360.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swift Form Fields" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2y-sB-gqV">
                                                         <rect key="frame" x="0.0" y="0.0" width="384" height="20.5"/>
@@ -34,79 +34,68 @@
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4FN-or-tWJ" customClass="SFTextField" customModule="SwiftFormHost" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="55.5" width="384" height="50"/>
-                                                        <color key="backgroundColor" systemColor="systemGray6Color"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="Xgy-Ye-oq7"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter your full name"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconLeft" value="person.circle.fill" catalog="system"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="10"/>
+                                                                <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingHorizontal">
-                                                                <real key="value" value="15"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                <real key="value" value="1"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconLeft" value="person" catalog="system"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" systemColor="systemPinkColor"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="height">
+                                                                <real key="value" value="60"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7SG-SP-NhI" customClass="SFTextField" customModule="SwiftFormHost" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="140.5" width="384" height="75"/>
+                                                        <rect key="frame" x="0.0" y="140.5" width="384" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="75" id="8aq-Xy-fby"/>
+                                                            <constraint firstAttribute="height" constant="50" id="8aq-Xy-fby"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter your email"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="10"/>
+                                                                <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingHorizontal">
-                                                                <real key="value" value="15"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconLeft" value="envelope" catalog="system"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="height">
-                                                                <real key="value" value="200"/>
+                                                                <real key="value" value="50"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ws-MZ-9Sh" customClass="SFTextField" customModule="SwiftFormHost" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="250.5" width="384" height="50"/>
+                                                        <rect key="frame" x="0.0" y="225.5" width="384" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="vu1-PW-Suy"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter a new password"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingHorizontal">
-                                                                <real key="value" value="15"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconLeft" value="person.badge.key" catalog="system"/>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconRight" value="eye.slash" catalog="system"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3PR-iB-y5N" customClass="SFTextField" customModule="SwiftFormHost" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="335.5" width="384" height="50"/>
+                                                        <rect key="frame" x="0.0" y="310.5" width="384" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="50" id="zNt-9c-3iq"/>
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Confirm your password"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="10"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="paddingHorizontal">
-                                                                <real key="value" value="15"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconRight" value="eye.slash" catalog="system"/>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconLeft" value="person.badge.key" catalog="system"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
@@ -152,10 +141,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="envelope" catalog="system" width="128" height="93"/>
-        <image name="eye.slash" catalog="system" width="128" height="84"/>
-        <image name="person" catalog="system" width="128" height="121"/>
-        <image name="person.badge.key" catalog="system" width="128" height="116"/>
+        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -164,6 +150,9 @@
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

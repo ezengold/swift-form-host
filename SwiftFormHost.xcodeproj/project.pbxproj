@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B101521329998586001F2B87 /* SFTextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B101521229998586001F2B87 /* SFTextFieldDelegate.swift */; };
+		B194A1EA2A9F59DD00A3958D /* SFTextFieldParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = B194A1E92A9F59DD00A3958D /* SFTextFieldParams.swift */; };
 		B1A6FE2B2998E18F00F9D19C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6FE2A2998E18F00F9D19C /* AppDelegate.swift */; };
 		B1A6FE2D2998E18F00F9D19C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6FE2C2998E18F00F9D19C /* SceneDelegate.swift */; };
 		B1A6FE2F2998E18F00F9D19C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A6FE2E2998E18F00F9D19C /* ViewController.swift */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		B101521229998586001F2B87 /* SFTextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTextFieldDelegate.swift; sourceTree = "<group>"; };
+		B194A1E92A9F59DD00A3958D /* SFTextFieldParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFTextFieldParams.swift; sourceTree = "<group>"; };
 		B1A6FE272998E18F00F9D19C /* SwiftFormHost.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftFormHost.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1A6FE2A2998E18F00F9D19C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B1A6FE2C2998E18F00F9D19C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				B1A6FE3F2998E2FF00F9D19C /* SFTextField.swift */,
 				B101521229998586001F2B87 /* SFTextFieldDelegate.swift */,
+				B194A1E92A9F59DD00A3958D /* SFTextFieldParams.swift */,
 			);
 			path = Fields;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B194A1EA2A9F59DD00A3958D /* SFTextFieldParams.swift in Sources */,
 				B1BFE3CA2A90C607005D5DD1 /* MinValue.swift in Sources */,
 				B1BFE3C52A90C607005D5DD1 /* MaxValue.swift in Sources */,
 				B1BFE3CB2A90C607005D5DD1 /* IsEmail.swift in Sources */,

@@ -6,81 +6,79 @@
 //
 
 import UIKit
+import SwiftUI
 
 // @IBDesignable
 class SFTextField: UIView {
 	
-	@IBInspectable var height: CGFloat = 40.0
+	@ObservedObject var params = SFTextFieldParams()
 	
-	let textField = UITextField()
-	
-	private let vStack = UIStackView()
-	
-	private let hStack = UIStackView()
-	
-	private let errorLabel = UILabel()
-	
-	var name: String = ""
-
-	var error: String = "" {
+	@IBInspectable var height: CGFloat = 40 {
 		didSet {
-			setErrorLabel()
+			params.height = self.height
 		}
 	}
 	
-	var errorAlignment: NSTextAlignment = .right
-	
-	@IBInspectable var errorFont: UIFont {
-		get {
-			return errorLabel.font ?? UIFont.systemFont(ofSize: 12)
+	@IBInspectable var name: String = "" {
+		didSet {
+			params.name = self.name
 		}
-		set {
-			errorLabel.font = newValue
+	}
+	
+	@IBInspectable var value: String = "" {
+		didSet {
+			params.value = self.value
+		}
+	}
+	
+	@IBInspectable var placeholder: String = "" {
+		didSet {
+			params.placeholder = self.placeholder
+		}
+	}
+	
+	@IBInspectable var font: UIFont = UIFont.systemFont(ofSize: 15)  {
+		didSet {
+			params.font = self.font
+		}
+	}
+	
+	var error: String = ""  {
+		didSet {
+			params.error = self.error
+		}
+	}
+	
+	@IBInspectable var errorFont: UIFont = UIFont.systemFont(ofSize: 12)  {
+		didSet {
+			params.errorFont = self.errorFont
+		}
+	}
+	
+	var errorAlign: TextAlignment = .trailing  {
+		didSet {
+			params.errorAlignment = self.errorAlign
 		}
 	}
 	
 	var delegate: SFTextFieldDelegate? = nil
-
-	@IBInspectable var value: String {
-		get {
-			return textField.text ?? ""
-		}
-		set {
-			textField.text = newValue
-		}
-	}
-	
-	@IBInspectable var font: UIFont {
-		get {
-			return textField.font ?? UIFont.systemFont(ofSize: 15)
-		}
-		set {
-			textField.font = newValue
-		}
-	}
-	
-	@IBInspectable var placeholder: String {
-		get {
-			return textField.placeholder ?? ""
-		}
-		set {
-			textField.placeholder = newValue
-		}
-	}
 	
 	// MARK: - Icons attributes
 	/**
 	 Icon displayed on Left of the text field
 	 */
-	@IBInspectable var iconLeft: UIImage? = nil {
+	@IBInspectable var iconLeft: UIImage? {
 		didSet {
-			setLeftIcon()
+			params.iconLeft = self.iconLeft
 		}
 	}
 	
-	@IBInspectable var iconRight: UIImage? = nil {
+	/**
+	 Icon displayed on Right of the text field
+	 */
+	@IBInspectable var iconRight: UIImage? {
 		didSet {
-			setRightIcon()
+			params.iconRight = self.iconRight
 		}
 	}
 	
@@ -89,90 +87,67 @@ class SFTextField: UIView {
 	 
 	 - parameter iconView: Representation of the image view containing the left icon image
 	 */
-	var onClickLeft: ((UIImageView) -> Void)? = nil
+	var onClickLeft: (() -> Void)? = nil {
+		didSet {
+			params.onClickLeft = self.onClickLeft
+		}
+	}
 	
 	/**
 	 Action triggered when user tap on the right icon
 	 
 	 - parameter iconView: Representation of the image view containing the right icon image
 	 */
-	var onClickRight: ((UIImageView) -> Void)? = nil
-	
-	/**
-	 Image view holding the left icon
-	 */
-	private var leftIV = UIImageView()
-	
-	/**
-	 Image view holding the right icon
-	 */
-	private var rightIV = UIImageView()
+	var onClickRight: (() -> Void)? = nil {
+		didSet {
+			params.onClickRight = self.onClickRight
+		}
+	}
 	
 	// MARK: - Constraints applied
 	/**
 	 Insets applied to the field insets
 	 */
-	var contentInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10) {
+	var contentInsets: UIEdgeInsets = UIEdgeInsets(top: 5, left: 10, bottom: 5, right: 10) {
 		didSet {
-			updateContentInsets()
-		}
-	}
-	
-	/**
-	 Padding top
-	 */
-	private var paddingTop = NSLayoutConstraint()
-	
-	/**
-	 Padding right
-	 */
-	private var paddingRight = NSLayoutConstraint()
-	
-	/**
-	 Padding bottom
-	 */
-	private var paddingBottom = NSLayoutConstraint()
-	
-	/**
-	 Padding left
-	 */
-	private var paddingLeft = NSLayoutConstraint()
-	
-	/**
-	 Horizontal padding
-	 */
-	@IBInspectable var paddingHorizontal: CGFloat {
-		get {
-			return min(contentInsets.left, contentInsets.right)
-		}
-		set {
-			contentInsets = UIEdgeInsets(
-				top: contentInsets.top,
-				left: newValue,
-				bottom: contentInsets.bottom,
-				right: newValue
-			)
-		}
-	}
-	
-	/**
-	 Vertical padding
-	 */
-	@IBInspectable var paddingVertical: CGFloat {
-		get {
-			return min(contentInsets.top, contentInsets.top)
-		}
-		set {
-			contentInsets = UIEdgeInsets(
-				top: newValue,
-				left: contentInsets.left,
-				bottom: newValue,
-				right: contentInsets.right
-			)
+			params.contentInsets = self.contentInsets
 		}
 	}
 	
 	// MARK: - Views creation
+	override var backgroundColor: UIColor? {
+		get {
+			params.backgroundColor
+		}
+		set {
+			params.backgroundColor = newValue ?? .clear
+		}
+	}
+	
+	override var tintColor: UIColor! {
+		didSet {
+			params.tintColor = self.tintColor
+		}
+	}
+	
+	@IBInspectable var cornerRadius: CGFloat = 0 {
+		didSet {
+			params.cornerRadius = self.cornerRadius
+		}
+	}
+	
+	@IBInspectable var borderWidth: CGFloat = 0 {
+		didSet {
+			params.borderWidth = self.borderWidth
+		}
+	}
+	
+	@IBInspectable var borderColor: UIColor = .clear {
+		didSet {
+			params.borderColor = self.borderColor
+		}
+	}
+	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
 		
@@ -186,135 +161,19 @@ class SFTextField: UIView {
 	}
 	
 	private func initializeView() {
-		vStack.axis = .vertical
-		vStack.alignment = .fill
-		vStack.distribution = .fill
-		vStack.spacing = 0
-		vStack.translatesAutoresizingMaskIntoConstraints = false
-
-		hStack.axis = .horizontal
-		hStack.alignment = .fill
-		hStack.distribution = .fill
-		hStack.spacing = 10
-		hStack.translatesAutoresizingMaskIntoConstraints = false
+		let fieldView = SFTextFieldView(params: params)
+		
+		let hostingVC = UIHostingController(rootView: fieldView)
+		hostingVC.view.translatesAutoresizingMaskIntoConstraints = false
+		hostingVC.view.backgroundColor = .clear
+		addSubview(hostingVC.view)
+		
 		NSLayoutConstraint.activate([
-			NSLayoutConstraint(item: hStack, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1.0, constant: self.height)
+			hostingVC.view.topAnchor.constraint(equalTo: topAnchor),
+			hostingVC.view.leadingAnchor.constraint(equalTo: leadingAnchor),
+			hostingVC.view.trailingAnchor.constraint(equalTo: trailingAnchor),
+			hostingVC.view.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])
-		
-		vStack.addArrangedSubview(hStack)
-		errorLabel.tag = 4
-		if !self.error.isEmpty {
-			vStack.addArrangedSubview(errorLabel)
-		}
-		
-		addSubview(vStack)
-		
-		paddingTop = NSLayoutConstraint(item: self, attribute: .top, relatedBy: .equal, toItem: vStack, attribute: .top, multiplier: 1.0, constant: -contentInsets.top)
-		paddingRight = NSLayoutConstraint(item: self, attribute: .right, relatedBy: .equal, toItem: vStack, attribute: .right, multiplier: 1.0, constant: contentInsets.right)
-		paddingBottom = NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: vStack, attribute: .bottom, multiplier: 1.0, constant: contentInsets.bottom)
-		paddingLeft = NSLayoutConstraint(item: self, attribute: .left, relatedBy: .equal, toItem: vStack, attribute: .left, multiplier: 1.0, constant: -contentInsets.left)
-		NSLayoutConstraint.activate([paddingTop, paddingRight, paddingBottom, paddingLeft])
-		
-		setLeftIcon()
-		setRightIcon()
-		
-		leftIV.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(leftAction)))
-		rightIV.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(rightAction)))
-		
-		setInputField()
-		
-		setErrorLabel()
-	}
-	
-	@objc
-	func leftAction(_ sender: UITapGestureRecognizer) {
-		self.onClickLeft?(self.leftIV)
-	}
-	
-	@objc
-	func rightAction(_ sender: UITapGestureRecognizer) {
-		self.onClickRight?(self.rightIV)
-	}
-	
-	private func setLeftIcon() {
-		if let icon = self.iconLeft {
-			if hStack.arrangedSubviews.first(where: { $0.tag == 1 }) is UIImageView {
-				leftIV.image = icon
-			} else {
-				leftIV.image = icon
-				leftIV.translatesAutoresizingMaskIntoConstraints = false
-				leftIV.contentMode = .scaleAspectFit
-				leftIV.tintColor = self.tintColor
-				leftIV.isUserInteractionEnabled = true
-				leftIV.tag = 1
-				NSLayoutConstraint.activate([
-					NSLayoutConstraint(item: leftIV, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 25)
-				])
-				hStack.insertArrangedSubview(leftIV, at: 0)
-			}
-		} else {
-			if let iconIV = hStack.arrangedSubviews.first(where: { $0.tag == 1 }) {
-				iconIV.removeFromSuperview()
-			}
-		}
-	}
-	
-	private func setRightIcon() {
-		if let icon = self.iconRight {
-			if hStack.arrangedSubviews.first(where: { $0.tag == 3 }) is UIImageView {
-				rightIV.image = icon
-			} else {
-				rightIV.image = icon
-				rightIV.translatesAutoresizingMaskIntoConstraints = false
-				rightIV.contentMode = .scaleAspectFit
-				rightIV.tintColor = self.tintColor
-				rightIV.isUserInteractionEnabled = true
-				rightIV.tag = 3
-				NSLayoutConstraint.activate([
-					NSLayoutConstraint(item: rightIV, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 25)
-				])
-				hStack.addArrangedSubview(rightIV)
-			}
-		} else {
-			if let iconIV = hStack.arrangedSubviews.first(where: { $0.tag == 3 }) {
-				iconIV.removeFromSuperview()
-			}
-		}
-	}
-	
-	private func setInputField() {
-		textField.borderStyle = .none
-		textField.placeholder = placeholder
-		textField.tintColor = self.tintColor
-		
-		if hStack.arrangedSubviews.contains(where: { $0.tag == 2 }) {
-			// do customizations
-		} else {
-			textField.tag = 2
-			hStack.insertArrangedSubview(textField, at: self.iconLeft != nil ? 1 : 0)
-		}
-	}
-	
-	private func setErrorLabel() {
-		errorLabel.numberOfLines = 1
-		errorLabel.textAlignment = self.errorAlignment
-		errorLabel.textColor = .red // TODO: To be defined
-		errorLabel.text = self.error
-
-		if vStack.arrangedSubviews.first(where: { $0.tag == 4 }) is UILabel {
-			if self.error.isEmpty {
-				errorLabel.removeFromSuperview()
-			}
-		} else if !self.error.isEmpty {
-			vStack.addArrangedSubview(self.errorLabel)
-		}
-	}
-	
-	private func updateContentInsets() {
-		paddingTop.constant = -contentInsets.top
-		paddingRight.constant = contentInsets.right
-		paddingBottom.constant = contentInsets.bottom
-		paddingLeft.constant = -contentInsets.left
 	}
 	
 	func registerTextField(withIdentifier name: String, target: SFTextFieldDelegate) {
@@ -329,4 +188,58 @@ class SFTextField: UIView {
 //			}
 //		}
 //	}
+}
+
+struct SFTextFieldView: View {
+	@ObservedObject var params: SFTextFieldParams
+	
+	var body: some View {
+		VStack(alignment: .trailing, spacing: 5) {
+			HStack(alignment: .center, spacing: 10) {
+				if let safeLeftIcon = params.iconLeft {
+					Image(uiImage: safeLeftIcon)
+						.resizable()
+						.scaledToFit()
+						.frame(width: 25, height: 25)
+				}
+				TextField(params.placeholder, text: $params.value)
+					.font(Font(params.font))
+					.accentColor(Color(params.tintColor))
+					.keyboardType(params.keyboardType)
+					.frame(maxWidth: .infinity, alignment: .leading)
+				if let safeRightIcon = params.iconRight {
+					Image(uiImage: safeRightIcon)
+						.resizable()
+						.scaledToFit()
+						.frame(width: 25, height: 25)
+				}
+			}
+			.padding(.leading, params.contentInsets.left)
+			.padding(.top, params.contentInsets.top)
+			.padding(.trailing, params.contentInsets.right)
+			.padding(.bottom, params.contentInsets.bottom)
+			.frame(height: params.height)
+			.background(Color(params.backgroundColor))
+			.cornerRadius(params.cornerRadius)
+			.overlay(
+				params.borderWidth > 0 ?
+				RoundedRectangle(cornerRadius: params.cornerRadius)
+					.stroke(Color(params.borderColor), lineWidth: params.borderWidth)
+				:
+					nil
+			)
+		}
+		if !params.error.isEmpty {
+			Text(params.error)
+				.foregroundColor(.red)
+				.font(Font(params.errorFont))
+				.frame(maxWidth: .infinity, alignment: params.errorAlignment == .leading ? .leading : (params.errorAlignment == .trailing ? .trailing : .center))
+		}
+	}
+}
+
+struct SFTextFieldView_Previews: PreviewProvider {
+	static var previews: some View {
+		SFTextFieldView(params: SFTextFieldParams())
+	}
 }
