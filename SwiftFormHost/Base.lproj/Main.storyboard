@@ -41,7 +41,7 @@
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="Enter your full name"/>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconLeft" value="person.circle.fill" catalog="system"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconLeft" value="plus"/>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="5"/>
                                                             </userDefinedRuntimeAttribute>
@@ -57,7 +57,13 @@
                                                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                             </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconRight" value="arrow.right" catalog="system"/>
+                                                            <userDefinedRuntimeAttribute type="image" keyPath="iconRight" value="experience"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="iconLeftColor">
+                                                                <color key="value" red="0.86274509799999999" green="0.14901960780000001" blue="0.14901960780000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="iconRightColor">
+                                                                <color key="value" red="0.086274509799999996" green="0.63921568630000003" blue="0.2901960784" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7SG-SP-NhI" customClass="SFTextField" customModule="SwiftFormHost" customModuleProvider="target">
@@ -153,9 +159,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.right" catalog="system" width="128" height="95"/>
         <image name="envelope" catalog="system" width="128" height="93"/>
-        <image name="person.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="experience" width="512" height="512"/>
+        <image name="plus" width="128" height="128"/>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

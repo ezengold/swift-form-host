@@ -24,6 +24,14 @@ class SFTextFieldParams: ObservableObject {
 	@Published var iconLeft: UIImage? = nil
 	
 	@Published var iconRight: UIImage? = nil
+    
+    @Published var iconLeftColor: UIColor = .label
+    
+    @Published var iconRightColor: UIColor = .label
+    
+    @Published var iconLeftRenderingMode: Image.TemplateRenderingMode = .template
+    
+    @Published var iconRightRenderingMode: Image.TemplateRenderingMode = .template
 	
 	var onClickLeft: (() -> Void)? = nil
 	

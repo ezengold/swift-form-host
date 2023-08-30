@@ -67,6 +67,27 @@ class SFTextField: UIView {
 	var delegate: SFTextFieldDelegate? = nil
 	
 	// MARK: - Icons attributes
+    
+    /**
+    Icon left color
+     */
+    @IBInspectable var iconLeftColor: UIColor = .label {
+        didSet {
+            params.iconLeftColor = self.iconLeftColor
+        }
+    }
+    
+    
+    /**
+    Icon right color
+     */
+    @IBInspectable var iconRightColor: UIColor = .label {
+        didSet {
+            params.iconRightColor = self.iconRightColor
+        }
+    }
+    
+    
 	/**
 	 Icon displayed on Left of the text field
 	 */
@@ -84,6 +105,24 @@ class SFTextField: UIView {
 			params.iconRight = self.iconRight
 		}
 	}
+    
+    /**
+     Image Template rendering mode for icon left
+     */
+    var iconLeftTemplateRenderingMode: Image.TemplateRenderingMode = .template {
+        didSet {
+            params.iconLeftRenderingMode = self.iconLeftTemplateRenderingMode
+        }
+    }
+    
+    /**
+     Image Template rendering mode for icon right
+     */
+    var iconRightTemplateRenderingMode: Image.TemplateRenderingMode = .template {
+        didSet {
+            params.iconRightRenderingMode = self.iconRightTemplateRenderingMode
+        }
+    }
 	
 	/**
 	 Action triggered when user tap on the left icon
@@ -214,8 +253,10 @@ struct SFTextFieldView: View {
 				if let safeLeftIcon = params.iconLeft {
 					Image(uiImage: safeLeftIcon)
 						.resizable()
+                        .renderingMode(params.iconLeftRenderingMode)
+                        .foregroundColor(Color(params.iconLeftColor))
 						.scaledToFit()
-						.frame(width: 25, height: 25)
+						.frame(width: 20, height: 20)
                         .onTapGesture {
                             if let handlerOnClickLeft = params.onClickLeft {
                                 handlerOnClickLeft()
@@ -231,8 +272,10 @@ struct SFTextFieldView: View {
 				if let safeRightIcon = params.iconRight {
 					Image(uiImage: safeRightIcon)
 						.resizable()
+                        .renderingMode(params.iconRightRenderingMode)
+                        .foregroundColor(Color(params.iconRightColor))
 						.scaledToFit()
-						.frame(width: 25, height: 25)
+						.frame(width: 20, height: 20)
                         .onTapGesture {
                             if let handlerOnClickRight = params.onClickRight {
                                 handlerOnClickRight()
