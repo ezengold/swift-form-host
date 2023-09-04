@@ -46,6 +46,7 @@ class SFTextField: UIView {
 		}
 	}
 	
+	// MARK: - Error attributes
 	var error: String = ""  {
 		didSet {
 			params.error = self.error
@@ -61,6 +62,18 @@ class SFTextField: UIView {
 	var errorAlign: TextAlignment = .trailing  {
 		didSet {
 			params.errorAlignment = self.errorAlign
+		}
+	}
+	
+	@IBInspectable var showErrorLabel: Bool = true  {
+		didSet {
+			params.showErrorLabel = self.showErrorLabel
+		}
+	}
+	
+	@IBInspectable var showErrorBorder: Bool = true  {
+		didSet {
+			params.showErrorBorder = self.showErrorBorder
 		}
 	}
 	
@@ -105,6 +118,15 @@ class SFTextField: UIView {
 			params.iconRight = self.iconRight
 		}
 	}
+	
+	/**
+	 Icon displayed on Right of the text field when error is not empty
+	 */
+	@IBInspectable var errorIcon: UIImage? {
+		didSet {
+			params.errorIcon = self.errorIcon
+		}
+	}
     
     /**
      Image Template rendering mode for icon left
@@ -123,6 +145,15 @@ class SFTextField: UIView {
             params.iconRightRenderingMode = self.iconRightTemplateRenderingMode
         }
     }
+	
+	/**
+	 Image Template rendering mode for error icon
+	 */
+	var errorIconTemplateRenderingMode: Image.TemplateRenderingMode = .template {
+		didSet {
+			params.errorIconRenderingMode = self.errorIconTemplateRenderingMode
+		}
+	}
 	
 	/**
 	 Action triggered when user tap on the left icon
@@ -269,18 +300,32 @@ struct SFTextFieldView: View {
 					.foregroundColor(Color(params.textColor))
 					.keyboardType(params.keyboardType)
 					.frame(maxWidth: .infinity, alignment: .leading)
-				if let safeRightIcon = params.iconRight {
-					Image(uiImage: safeRightIcon)
+				if let safeErrorIcon = params.errorIcon, !params.error.isEmpty {
+					Image(uiImage: safeErrorIcon)
 						.resizable()
-                        .renderingMode(params.iconRightRenderingMode)
-                        .foregroundColor(Color(params.iconRightColor))
+						.renderingMode(params.errorIconRenderingMode)
+						.foregroundColor(Color(params.errorTextColor))
 						.scaledToFit()
 						.frame(width: 20, height: 20)
-                        .onTapGesture {
-                            if let handlerOnClickRight = params.onClickRight {
-                                handlerOnClickRight()
-                            }
-                        }
+						.onTapGesture {
+							if let handlerOnClickRight = params.onClickRight {
+								handlerOnClickRight()
+							}
+						}
+				} else {
+					if let safeRightIcon = params.iconRight {
+						Image(uiImage: safeRightIcon)
+							.resizable()
+							.renderingMode(params.iconRightRenderingMode)
+							.foregroundColor(Color(params.iconRightColor))
+							.scaledToFit()
+							.frame(width: 20, height: 20)
+							.onTapGesture {
+								if let handlerOnClickRight = params.onClickRight {
+									handlerOnClickRight()
+								}
+							}
+					}
 				}
 			}
 			.padding(.leading, params.contentInsets.left)
@@ -293,12 +338,18 @@ struct SFTextFieldView: View {
 			.overlay(
 				params.borderWidth > 0 ?
 				RoundedRectangle(cornerRadius: params.cornerRadius)
-					.stroke(Color(params.borderColor), lineWidth: params.borderWidth)
+					.stroke(Color(!params.error.isEmpty && params.showErrorBorder ? params.errorTextColor : params.borderColor), lineWidth: params.borderWidth)
 				:
-					nil
+					(
+						!params.error.isEmpty && params.showErrorBorder ?
+						RoundedRectangle(cornerRadius: params.cornerRadius)
+							.stroke(Color(params.errorTextColor), lineWidth: 1)
+						:
+							nil
+					)
 			)
 		}
-		if !params.error.isEmpty {
+		if !params.error.isEmpty && params.showErrorLabel {
 			Text(params.error)
 				.foregroundColor(Color(params.errorTextColor))
 				.font(Font(params.errorFont))

@@ -24,6 +24,8 @@ class SFTextFieldParams: ObservableObject {
 	@Published var iconLeft: UIImage? = nil
 	
 	@Published var iconRight: UIImage? = nil
+	
+	@Published var errorIcon: UIImage? = nil
     
     @Published var iconLeftColor: UIColor = .label
     
@@ -32,6 +34,8 @@ class SFTextFieldParams: ObservableObject {
     @Published var iconLeftRenderingMode: Image.TemplateRenderingMode = .template
     
     @Published var iconRightRenderingMode: Image.TemplateRenderingMode = .template
+	
+	@Published var errorIconRenderingMode: Image.TemplateRenderingMode = .template
 	
 	var onClickLeft: (() -> Void)? = nil
 	
@@ -58,4 +62,8 @@ class SFTextFieldParams: ObservableObject {
 	@Published var borderWidth: CGFloat = 0
 	
 	@Published var borderColor: UIColor = .clear
+	
+	@Published var showErrorLabel: Bool = true
+	
+	@Published var showErrorBorder: Bool = true
 }

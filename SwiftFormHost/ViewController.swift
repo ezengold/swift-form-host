@@ -19,7 +19,15 @@ class ViewController: UIViewController {
 	
 	var rules = [String: [String]]()
 	
-	var isSecured: Bool = true
+	var isSecured: Bool = true {
+		didSet {
+			let error = self.isSecured ? "Champ requis" : ""
+			emailField.error = error
+			nameField.error = error
+			passwordField.error = error
+			passconfField.error = error
+		}
+	}
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -32,6 +40,8 @@ extension ViewController {
 	
 	private func createViews() {
 		nameField.registerTextField(withIdentifier: nameField.tag.description, target: self)
+		nameField.onClickRight = { self.isSecured.toggle() }
+		
 		emailField.registerTextField(withIdentifier: emailField.tag.description, target: self)
 		passwordField.registerTextField(withIdentifier: passwordField.tag.description, target: self)
 		passconfField.registerTextField(withIdentifier: passconfField.tag.description, target: self)
