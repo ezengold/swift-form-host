@@ -91,7 +91,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ws-MZ-9Sh" customClass="SFTextField" customModule="SwiftFormHost" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ws-MZ-9Sh" customClass="SFPasswordField" customModule="SwiftFormHost" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="225.5" width="384" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
@@ -112,7 +112,7 @@
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3PR-iB-y5N" customClass="SFTextField" customModule="SwiftFormHost" customModuleProvider="target">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3PR-iB-y5N" customClass="SFPasswordField" customModule="SwiftFormHost" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="310.5" width="384" height="50"/>
                                                         <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
@@ -161,8 +161,8 @@
                     <connections>
                         <outlet property="emailField" destination="7SG-SP-NhI" id="c7Q-eJ-6qR"/>
                         <outlet property="nameField" destination="4FN-or-tWJ" id="mUC-dF-ksS"/>
-                        <outlet property="passconfField" destination="3PR-iB-y5N" id="EPn-Vi-RGz"/>
-                        <outlet property="passwordField" destination="7Ws-MZ-9Sh" id="vI5-ZE-fPU"/>
+                        <outlet property="passconfField" destination="3PR-iB-y5N" id="Dyx-Rh-kaY"/>
+                        <outlet property="passwordField" destination="7Ws-MZ-9Sh" id="jbI-PA-t9D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
