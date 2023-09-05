@@ -66,4 +66,8 @@ class SFTextFieldParams: ObservableObject {
 	@Published var showErrorLabel: Bool = true
 	
 	@Published var showErrorBorder: Bool = true
+    
+    @Published var isSecuredTextEntry: Bool = false
+    
+    @Published var shouldEnableToggleSecureMode: Bool = true
 }

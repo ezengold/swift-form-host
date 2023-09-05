@@ -34,6 +34,8 @@
 		B1BFE3CD2A90C607005D5DD1 /* IsNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3C02A90C607005D5DD1 /* IsNumber.swift */; };
 		B1BFE3CE2A90C607005D5DD1 /* IsDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3C12A90C607005D5DD1 /* IsDate.swift */; };
 		B1BFE3CF2A90C607005D5DD1 /* IsInteger.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1BFE3C22A90C607005D5DD1 /* IsInteger.swift */; };
+		B6E912742AA6973E002B4B1C /* SFPasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E912732AA6973E002B4B1C /* SFPasswordField.swift */; };
+		B6E912762AA7416F002B4B1C /* SFBaseTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6E912752AA7416F002B4B1C /* SFBaseTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -66,6 +68,8 @@
 		B1BFE3C02A90C607005D5DD1 /* IsNumber.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsNumber.swift; sourceTree = "<group>"; };
 		B1BFE3C12A90C607005D5DD1 /* IsDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsDate.swift; sourceTree = "<group>"; };
 		B1BFE3C22A90C607005D5DD1 /* IsInteger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IsInteger.swift; sourceTree = "<group>"; };
+		B6E912732AA6973E002B4B1C /* SFPasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFPasswordField.swift; sourceTree = "<group>"; };
+		B6E912752AA7416F002B4B1C /* SFBaseTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFBaseTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,9 +129,11 @@
 		B1A6FE452998E33E00F9D19C /* Fields */ = {
 			isa = PBXGroup;
 			children = (
+				B6E912752AA7416F002B4B1C /* SFBaseTextField.swift */,
 				B1A6FE3F2998E2FF00F9D19C /* SFTextField.swift */,
 				B101521229998586001F2B87 /* SFTextFieldDelegate.swift */,
 				B194A1E92A9F59DD00A3958D /* SFTextFieldParams.swift */,
+				B6E912732AA6973E002B4B1C /* SFPasswordField.swift */,
 			);
 			path = Fields;
 			sourceTree = "<group>";
@@ -239,7 +245,9 @@
 				B1BFE3CB2A90C607005D5DD1 /* IsEmail.swift in Sources */,
 				B1A6FE422998E31A00F9D19C /* Extensions.swift in Sources */,
 				B1BFE3B22A90C5EE005D5DD1 /* SwiftFormModel.swift in Sources */,
+				B6E912742AA6973E002B4B1C /* SFPasswordField.swift in Sources */,
 				B1A6FE2F2998E18F00F9D19C /* ViewController.swift in Sources */,
+				B6E912762AA7416F002B4B1C /* SFBaseTextField.swift in Sources */,
 				B1BFE3CD2A90C607005D5DD1 /* IsNumber.swift in Sources */,
 				B101521329998586001F2B87 /* SFTextFieldDelegate.swift in Sources */,
 				B1A6FE2B2998E18F00F9D19C /* AppDelegate.swift in Sources */,
