@@ -85,6 +85,11 @@ class SFTextField: SFBaseTextField {
 		}
 	}
 	
+	/**
+	 The text field's delegate
+	 */
+	var delegate: SFTextFieldDelegate? = nil
+	
 	override func initializeView() {
 		let fieldView = SFTextFieldView(params: params)
         
@@ -99,6 +104,16 @@ class SFTextField: SFBaseTextField {
 			hostingVC.view.trailingAnchor.constraint(equalTo: trailingAnchor),
 			hostingVC.view.bottomAnchor.constraint(equalTo: bottomAnchor)
 		])
+	}
+	
+	func registerTextField(withIdentifier name: String, target: SFTextFieldDelegate) {
+		self.name = name
+		self.delegate = target
+		
+		// Call registrations methods
+		if let enablingMethod = target.textFieldShouldBeginEditing {
+			params.isEnabled = enablingMethod(self)
+		}
 	}
 }
 
@@ -127,6 +142,7 @@ struct SFTextFieldView: View {
 					.foregroundColor(Color(params.textColor))
 					.keyboardType(params.keyboardType)
 					.multilineTextAlignment(params.textAlignment)
+					.disabled(!params.isEnabled)
 					.frame(maxWidth: .infinity, alignment: .leading)
 				if let safeErrorIcon = params.errorIcon, !params.error.isEmpty {
 					Image(uiImage: safeErrorIcon)
