@@ -48,7 +48,8 @@ class SFPasswordField: SFBaseTextField {
         }
     }
     
-    //MARK: - Password attribute
+    // MARK: - Password attributes
+	
     /**
      Should enable toggle attributes
      */
@@ -58,6 +59,10 @@ class SFPasswordField: SFBaseTextField {
         }
     }
     
+	/**
+	 The text field's delegate
+	 */
+	var delegate: SFTextFieldDelegate? = nil
     
     override func initializeView() {
         initPasswordAttributes()
@@ -79,7 +84,11 @@ class SFPasswordField: SFBaseTextField {
     private func initPasswordAttributes() {
         self.params.isSecuredTextEntry = true
     }
-
+	
+	func registerTextField(withIdentifier name: String, target: SFTextFieldDelegate) {
+		self.name = name
+		self.delegate = target
+	}
 }
 
 

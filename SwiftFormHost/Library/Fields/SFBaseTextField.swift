@@ -36,6 +36,7 @@ internal class SFBaseTextField: UIView {
         }
     }
     
+	// TODO: Fix appearance of fonts in storyboard
     @IBInspectable var fieldFont: UIFont  {
         get {
             params.font
@@ -81,8 +82,15 @@ internal class SFBaseTextField: UIView {
             params.showErrorBorder = self.showErrorBorder
         }
     }
-    
-    var delegate: SFTextFieldDelegate? = nil
+	
+	/**
+	 Whether text field is enabled or not
+	 */
+	@IBInspectable var isEnabled: Bool = true  {
+		didSet {
+			params.isEnabled = self.isEnabled
+		}
+	}
     
     // MARK: - Icons attributes
     
@@ -173,12 +181,7 @@ internal class SFBaseTextField: UIView {
         initializeView()
     }
     
-     internal func initializeView() {
+	internal func initializeView() {
         // To be defined in actual class
-    }
-    
-    func registerTextField(withIdentifier name: String, target: SFTextFieldDelegate) {
-        self.name = name
-        self.delegate = target
     }
 }

@@ -72,4 +72,6 @@ class SFTextFieldParams: ObservableObject {
     @Published var isSecuredTextEntry: Bool = false
     
     @Published var shouldEnableToggleSecureMode: Bool = true
+	
+	@Published var isEnabled: Bool = true
 }
