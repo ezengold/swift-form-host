@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var passconfField: SFPasswordField!
 
-	
 	var rules = [String: [String]]()
 	
 	var isSecured: Bool = true {

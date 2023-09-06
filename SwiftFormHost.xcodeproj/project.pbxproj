@@ -83,6 +83,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B1245E6C2AA8D37600FDC7CD /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B1A6FE432998E33400F9D19C /* Utils.swift */,
+				B1A6FE412998E31A00F9D19C /* Extensions.swift */,
+				B194A1E92A9F59DD00A3958D /* SFTextFieldParams.swift */,
+				B101521229998586001F2B87 /* SFTextFieldDelegate.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		B1A6FE1E2998E18F00F9D19C = {
 			isa = PBXGroup;
 			children = (
@@ -117,11 +128,10 @@
 		B1A6FE3E2998E2CB00F9D19C /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				B1245E6C2AA8D37600FDC7CD /* Core */,
 				B1BFE3AE2A90C55F005D5DD1 /* Validator */,
 				B1BFE3B52A90C607005D5DD1 /* Rules */,
 				B1A6FE452998E33E00F9D19C /* Fields */,
-				B1A6FE432998E33400F9D19C /* Utils.swift */,
-				B1A6FE412998E31A00F9D19C /* Extensions.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -131,8 +141,6 @@
 			children = (
 				B6E912752AA7416F002B4B1C /* SFBaseTextField.swift */,
 				B1A6FE3F2998E2FF00F9D19C /* SFTextField.swift */,
-				B101521229998586001F2B87 /* SFTextFieldDelegate.swift */,
-				B194A1E92A9F59DD00A3958D /* SFTextFieldParams.swift */,
 				B6E912732AA6973E002B4B1C /* SFPasswordField.swift */,
 			);
 			path = Fields;
