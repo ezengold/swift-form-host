@@ -45,6 +45,8 @@ class SFTextFieldParams: ObservableObject {
 	
 	@Published var font: UIFont = UIFont.systemFont(ofSize: 15)
 	
+	@Published var textAlignment: TextAlignment = .leading
+	
 	@Published var errorFont: UIFont = UIFont.systemFont(ofSize: 12)
 	
 	@Published var errorAlignment: TextAlignment = .trailing

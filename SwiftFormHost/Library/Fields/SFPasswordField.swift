@@ -105,6 +105,7 @@ struct SFPasswordFieldView: View {
                 if params.isSecuredTextEntry {
                     SecureField(params.placeholder, text: $params.value)
                         .font(Font(params.font))
+						.multilineTextAlignment(params.textAlignment)
                         .accentColor(Color(params.tintColor))
                         .foregroundColor(Color(params.textColor))
                         .keyboardType(params.keyboardType)
@@ -112,6 +113,7 @@ struct SFPasswordFieldView: View {
                 } else {
                     TextField(params.placeholder, text: $params.value)
                         .font(Font(params.font))
+						.multilineTextAlignment(params.textAlignment)
                         .accentColor(Color(params.tintColor))
                         .foregroundColor(Color(params.textColor))
                         .keyboardType(params.keyboardType)

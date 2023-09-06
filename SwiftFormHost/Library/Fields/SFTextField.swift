@@ -126,6 +126,7 @@ struct SFTextFieldView: View {
 					.accentColor(Color(params.tintColor))
 					.foregroundColor(Color(params.textColor))
 					.keyboardType(params.keyboardType)
+					.multilineTextAlignment(params.textAlignment)
 					.frame(maxWidth: .infinity, alignment: .leading)
 				if let safeErrorIcon = params.errorIcon, !params.error.isEmpty {
 					Image(uiImage: safeErrorIcon)

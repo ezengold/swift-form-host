@@ -44,6 +44,12 @@ internal class SFBaseTextField: UIView {
             params.font = newValue
         }
     }
+	
+	var textAlign: TextAlignment = .trailing  {
+		didSet {
+			params.textAlignment = self.textAlign
+		}
+	}
     
     // MARK: - Error attributes
     var error: String = ""  {
